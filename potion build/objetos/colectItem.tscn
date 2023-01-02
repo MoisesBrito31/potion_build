@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://_assets/tilersets/grama1.png" type="Texture" id=1]
+[ext_resource path="res://objetos/colectItem.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.0
+height = 4.0
+
+[node name="colectItem" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 96, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="TimerForced" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="timeout" from="TimerForced" to="." method="_on_TimerForced_timeout"]
